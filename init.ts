@@ -4,7 +4,9 @@ const { run } = porcelain;
 const mdopsContent = (file: string, script: string, local: boolean) =>
   `// After updating run '${script} recompile'
 import { allInOne } from "${
-    local ? `${"../".repeat(script.split("/").length-1)}./mod.ts` : "jsr:@mdops/lib"
+    local
+      ? `${"../".repeat(script.split("/").length - 1)}./mod.ts`
+      : "jsr:@mdops/lib"
   }";
 
 if (import.meta.main) {
@@ -16,6 +18,26 @@ if (import.meta.main) {
 }
 `;
 
+const depsContent = `
+
+## Dependencies
+
+| dependency | version |
+|------------|---------|
+|            |         |
+`
+
+const tasksContent = `
+
+## Tasks
+
+### recompile
+
+\`\`\` shell
+scripts/mdops recompile
+\`\`\`
+`;
+
 type Options = {
   mdFile: string;
   script: string;
@@ -23,8 +45,18 @@ type Options = {
 
 export const initScript = async ({ mdFile, script }: Options) => {
   try {
-      Deno.open(mdFile, {create: true})
-    using _ = await Deno.open(`${script}.ts`);
+    using _ = await Deno.open(mdFile, { create: true, append: true });
+    const mdContent = await Deno.readTextFile(mdFile);
+
+    if (!mdContent.includes("# Dependencies")) {
+      Deno.writeTextFile(mdFile, depsContent, { append: true });
+    }
+
+    if (!mdContent.includes("# Tasks")) {
+      Deno.writeTextFile(mdFile, tasksContent, { append: true });
+    }
+
+    using __ = await Deno.open(`${script}.ts`);
     console.error(`The ${script}.ts file already exists`);
     Deno.exit();
   } catch {
