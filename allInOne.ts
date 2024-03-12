@@ -2,6 +2,7 @@ import { Command } from "npm:@commander-js/extra-typings";
 import { parse } from "./mod.ts";
 import { initScript } from "./init.ts";
 import { porcelain } from "https://deno.land/x/libpkgx@v0.18.1/mod.ts";
+import { listDeps } from "./dependencies.ts";
 const { run } = porcelain;
 
 type Options = {
@@ -42,8 +43,12 @@ export const allInOne = async (
     .description(
       "Initiate the current directory by creating a `scripts/mdops` binary in it",
     )
-    .option('-m, --md-file <file>', "Path to the default markdown file", opsFile)
-    .option('-s, --script <script>', "Path to the script", "scripts/mdops")
+    .option(
+      "-m, --md-file <file>",
+      "Path to the default markdown file",
+      opsFile,
+    )
+    .option("-s, --script <script>", "Path to the script", "scripts/mdops")
     .action(initScript);
 
   program.command("recompile")
@@ -70,7 +75,8 @@ export const allInOne = async (
       ]);
     });
 
-  const dependencies = program.command("dependencies");
+  const dependencies = program.command("dependencies")
+    .description("Sub-tasks for managing dependencies");
 
   dependencies.command("list")
     .description("Print dependencies as listed in the markdown file")
@@ -80,11 +86,7 @@ export const allInOne = async (
       "CSS selector of the dependencies table",
       dependenciesSelector,
     )
-    .action(async (options) => {
-      const content = await Deno.readTextFile(options.file);
-      const result = parse(content).querySelector(options.selector);
-      console.log(JSON.stringify(result, undefined, 4));
-    });
+    .action(listDeps);
 
   await program.parseAsync();
 };

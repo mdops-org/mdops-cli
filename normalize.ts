@@ -1,10 +1,42 @@
-import { Heading, Parent, Root } from "npm:@types/mdast";
+import { Heading, Nodes, Root } from "npm:@types/mdast";
 import { SKIP, visitParents } from "npm:unist-util-visit-parents";
 
-const copyNodeWithoutChildren = <T extends Parent>(node: T): T => {
+type AddValueToHeading<T extends Nodes> = T extends Heading
+  ? Heading & { value: string }
+  : T;
+
+const copyNodeWithoutChildren = <T extends Nodes>(
+  node: T,
+): AddValueToHeading<T> => {
   const result = { ...node };
-  result["children"] = [];
-  delete result['position'];
+
+  if ("children" in result) {
+    result["children"] = [];
+
+    if (node.type === "heading" && node.children[0]?.type === "text") {
+      // @ts-ignore tyepscript doesn't understand that result is of type heading here
+      result.value = node.children[0].value;
+    }
+  }
+
+  if ("position" in result) {
+    delete result["position"];
+  }
+
+  // @ts-ignore it can't infer type of result properly
+  return result;
+};
+
+const copyRecursive = <T extends Nodes>(node: T): AddValueToHeading<T> => {
+  const result = copyNodeWithoutChildren(node);
+
+  if (node.type !== "heading" && "children" in node) {
+    for (const child of node["children"]) {
+      // @ts-ignore typescript doesn't understand result has children because node has
+      result.children.push(copyRecursive(child));
+    }
+  }
+
   return result;
 };
 
@@ -15,13 +47,9 @@ export const normalize = (root: Root): Root => {
   visitParents(root, (node) => {
     if (node.type === "root") return true;
 
-    const copy = copyNodeWithoutChildren(node as any);
+    const copy = copyRecursive(node);
 
     if (node.type === "heading") {
-      if (node.children[0].type === "text") {
-        copy.value = node.children[0].value;
-      }
-
       while (stack.length > 0 && stack.at(-1)!.depth >= node.depth) {
         stack.pop();
       }
@@ -29,9 +57,11 @@ export const normalize = (root: Root): Root => {
       if (stack.length === 0) {
         result.children.push(copy);
       } else {
+        // @ts-ignore It doesn't infer type of copy correctly
         stack.at(-1)!.children.push(copy);
       }
 
+      // @ts-ignore It doesn't infer type of copy correctly
       stack.push(copy);
       return SKIP;
     }
@@ -41,6 +71,7 @@ export const normalize = (root: Root): Root => {
       return SKIP;
     }
 
+    // @ts-ignore It doesn't infer type of copy correctly
     stack.at(-1)!.children.push(copy);
     return SKIP;
   });
