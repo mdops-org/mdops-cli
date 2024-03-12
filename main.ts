@@ -4,6 +4,6 @@ if (import.meta.main) {
   allInOne({
     opsFile: "README.md",
     dependenciesSelector: 'heading[value="Dependencies"] > table',
-    tasksSelector: 'heading[value="Tasks"]',
+    tasksSelector: 'heading[value="Tasks"] > heading',
   });
 }

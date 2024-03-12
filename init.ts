@@ -13,7 +13,7 @@ if (import.meta.main) {
   allInOne({
     opsFile: "${file}",
     dependenciesSelector: 'heading[value="Dependencies"] > table',
-    tasksSelector: 'heading[value="Tasks"]',
+    tasksSelector: 'heading[value="Tasks"] > heading',
   });
 }
 `;

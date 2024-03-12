@@ -3,6 +3,7 @@ import { parse } from "./mod.ts";
 import { initScript } from "./init.ts";
 import { porcelain } from "https://deno.land/x/libpkgx@v0.18.1/mod.ts";
 import { listDeps } from "./dependencies.ts";
+import { listTasks } from "./tasks.ts";
 const { run } = porcelain;
 
 type Options = {
@@ -76,7 +77,7 @@ export const allInOne = async (
     });
 
   const dependencies = program.command("dependencies")
-    .description("Sub-tasks for managing dependencies");
+    .description("Sub-commands for managing dependencies");
 
   dependencies.command("list")
     .description("Print dependencies as listed in the markdown file")
@@ -87,6 +88,19 @@ export const allInOne = async (
       dependenciesSelector,
     )
     .action(listDeps);
+
+  const tasks = program.command("tasks")
+    .description("Sub-commands for managing tasks");
+
+  tasks.command("list")
+    .description("Print all the available tasks from the markdown file")
+    .option("-f, --file <file>", "Path to markdown file", opsFile)
+    .option(
+      "-s, --selector <selector>",
+      "CSS selector of the dependencies table",
+      tasksSelector,
+    )
+    .action(listTasks);
 
   await program.parseAsync();
 };
