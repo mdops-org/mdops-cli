@@ -132,4 +132,4 @@ Here are some related projects. Thanks for the inspiration.
     
 ## License
 
-[MIT](https://choosealicense.com/licenses/mit/)
+[Apache License 2.0](https://choosealicense.com/licenses/apache-2.0/)
