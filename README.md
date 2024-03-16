@@ -21,7 +21,7 @@ One liner:
 sh <(curl -Ssf https://pkgx.sh) deno@1.41.2 run -A --unstable-ffi --unstable-fs https://raw.githubusercontent.com/mdops-org/mdops-cli/main/main.ts init
 ```
 
-Thanks to [pkgx.sh]() we don't need to install anything beforehand. This will use the pkgx oneliner to download a temporary
+Thanks to [pkgx](https://pkgx.sh) we don't need to install anything beforehand. This will use the pkgx oneliner to download a temporary
 Deno and use it to run our script over internet. Then the `init` subcommand will initialize the repo by updating the `README.md`
 file to add places for dependencies and tasks. And creates a `scripts` folder and puts a minimal `mdops.ts` file there and uses
 Deno to compile it to a binary. From now on you can use `scripts/mdops` from the root of your project to run tasks.
@@ -50,7 +50,7 @@ Deno to compile it to a binary. From now on you can use `scripts/mdops` from the
 
 ## Roadmap
 
-Check [./TODO.org]() file.
+Check [TODO.org](./TODO.org) file.
 
 ## Run Locally
 
@@ -81,11 +81,11 @@ scripts/mdops tasks list
 
 ## Tech Stack
 
-**Runtime:** [https://deno.com/]()
+**Runtime:** <https://deno.com/>
 
-**Dependency management:** [https://pkgx.sh/](), [https://github.com/pkgxdev/libpkgx]()
+**Dependency management:** <https://pkgx.sh/>, <https://github.com/pkgxdev/libpkgx>
 
-**Markdown parsing**: [https://unifiedjs.com/]()
+**Markdown parsing**: <https://unifiedjs.com/>
 
 
 ## FAQ
