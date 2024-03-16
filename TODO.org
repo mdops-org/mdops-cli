@@ -7,3 +7,5 @@
 * TODO allow version range in the dependencies
 * TODO `mdops x` to run commands with dependencies available
 * TODO search, add, remove, update dependencies
+* TODO create a shell script to proxy to local install
+* TODO create a homebrew formula for the shell script
