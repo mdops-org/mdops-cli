@@ -9,98 +9,100 @@ A simple tool to manage dependeny version management and task running for your p
 
 ## Demo
 
-Insert gif or link to demo
+[TODO placeholder for youtube demo]
 
 
 ## Installation
 
-Install my-project with npm
+One liner:
 
-```bash
-  npm install my-project
-  cd my-project
+```shell
+# cd to your project
+sh <(curl -Ssf https://pkgx.sh) deno@1.41.2 run -A --unstable-ffi --unstable-fs https://raw.githubusercontent.com/mdops-org/mdops-cli/main/main.ts init
 ```
 
-
-## Documentation
-
-[Documentation](https://linktodocumentation)
+Thanks to [pkgx.sh]() we don't need to install anything beforehand. This will use the pkgx oneliner to download a temporary
+Deno and use it to run our script over internet. Then the `init` subcommand will initialize the repo by updating the `README.md`
+file to add places for dependencies and tasks. And creates a `scripts` folder and puts a minimal `mdops.ts` file there and uses
+Deno to compile it to a binary. From now on you can use `scripts/mdops` from the root of your project to run tasks.
 
 
 ## Features
 
 - Light/dark mode toggle
-- Live previews
-- Fullscreen mode
-- Cross platform
-
-
-## Screenshots
-
 ![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
+- Live previews
+![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
+- Fullscreen mode
+![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
+- Cross platform
+![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
+
+
+## Documentation
+
+[TODO link to documentation website]
 
 
 ## Usage/Examples
 
-```javascript
-import Component from 'my-project'
-
-function App() {
-  return <Component />
-}
-```
-
+[TODO add usage]
 
 ## Roadmap
 
-- Additional browser support
-
-- Add more integrations
-
+Check [./TODO.org]() file.
 
 ## Run Locally
 
 Clone the project
 
 ```bash
-  git clone https://link-to-project
+  git clone https://github.com/mdops-org/mdops-cli
 ```
 
 Go to the project directory
 
 ```bash
-  cd my-project
+  cd mdops-cli
 ```
 
-Install dependencies
+Initialize the scripts folder
 
 ```bash
-  npm install
+sh <(curl -Ssf https://pkgx.sh) deno run -A --unstable-ffi --unstable-fs ./main.ts init
 ```
 
-Start the server
+List the tasks
 
 ```bash
-  npm run start
+scripts/mdops tasks list
 ```
 
 
 ## Tech Stack
 
-**Client:** React, Redux, TailwindCSS
+**Runtime:** [https://deno.com/]()
 
-**Server:** Node, Express
+**Dependency management:** [https://pkgx.sh/](), [https://github.com/pkgxdev/libpkgx]()
+
+**Markdown parsing**: [https://unifiedjs.com/]()
 
 
 ## FAQ
 
-### Question 1
+### Should I commit the mdops script and binary?
 
-Answer 1
+The normal usage of `mdops` is to create the script and binary once and it will never (or very rarely) change.
+By commiting the script and the binary to your repo you will make it easily accessible to the other devs.
 
-### Question 2
+However, if you are concerned for the size of the repo or if you want to change the script frequently, you can
+put the binary into `.gitignore` and add instructions for how to compile the script in the `README.md` file:
 
-Answer 2
+``` shell
+sh <(curl -Ssf https://pkgx.sh) deno@1.41.2 compile -A --unstable-ffi --unstable-fs -o scripts/ scripts/mdops.ts
+```
+
+This is a once step after cloning the repo.
 
 
 
@@ -122,9 +124,10 @@ scripts/mdops recompile
 
 ## Related
 
-Here are some related projects
+Here are some related projects. Thanks for the inspiration.
 
-[Awesome README](https://github.com/matiassingers/awesome-readme)
+* [pkgx: Run anything binary](https://pkgx.sh/)
+* [XC: Markdown defined task runner](https://github.com/joerdav/xc)
 
     
 ## License
