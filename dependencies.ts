@@ -2,18 +2,13 @@ import { TableRow, Text } from "npm:@types/mdast";
 import { parse } from "./parse.ts";
 import { Selectable } from "./selectable.ts";
 
-type Options = {
-    file: string;
-    selector: string;
-}
-
-export const listDeps = async (options: Options) => {
-  const content = await Deno.readTextFile(options.file);
-  const table = parse(content).querySelector(options.selector);
+export const getDeps = async (file: string, selector: string) => {
+  const content = await Deno.readTextFile(file);
+  const table = parse(content).querySelector(selector);
 
   if (table?.type !== "table") {
     console.error(
-      "The selected content with selector '${options.selector}' is not a table:",
+      `The selected content with selector '${selector}' is not a table:`,
       table,
     );
     Deno.exit();
@@ -43,9 +38,18 @@ export const listDeps = async (options: Options) => {
     Deno.exit();
   }
 
-  const deps = rows.map((row) =>
+  return rows.map((row) =>
     row.querySelectorAll("tableCell text").map((text) => (text as Text).value)
   );
+};
+
+type Options = {
+  file: string;
+  selector: string;
+};
+
+export const listDeps = async (options: Options) => {
+  const deps = await getDeps(options.file, options.selector);
 
   console.log(deps.map((d) => d.join(" :: ")).join("\n"));
 };

@@ -3,7 +3,7 @@ import { parse } from "./mod.ts";
 import { initScript } from "./init.ts";
 import { porcelain } from "https://deno.land/x/libpkgx@v0.18.1/mod.ts";
 import { listDeps } from "./dependencies.ts";
-import { listTasks } from "./tasks.ts";
+import { listTasks, runTask } from "./tasks.ts";
 const { run } = porcelain;
 
 type Options = {
@@ -101,6 +101,22 @@ export const allInOne = async (
       tasksSelector,
     )
     .action(listTasks);
+
+  tasks.command("run")
+    .description("Run a task")
+    .option("-f, --file <file>", "Path to markdown file", opsFile)
+    .option(
+      "-t, --tasks-selector <tasks-selector>",
+      "CSS selector of the tasks",
+      tasksSelector,
+    )
+    .option(
+      "-d, --deps-selector <deps-selector>",
+      "CSS selector of the dependencies table",
+      dependenciesSelector,
+    )
+    .argument("<task>", "Name of the task to run")
+    .action(runTask);
 
   await program.parseAsync();
 };
