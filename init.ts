@@ -1,13 +1,9 @@
 import { porcelain } from "https://deno.land/x/libpkgx@v0.18.1/mod.ts";
 const { run } = porcelain;
 
-const mdopsContent = (file: string, script: string, local: boolean) =>
+const mdopsContent = (file: string, script: string) =>
   `// After updating run '${script} recompile'
-import { allInOne } from "${
-    local
-      ? `${"../".repeat(script.split("/").length - 1)}./mod.ts`
-      : "jsr:@mdops/lib"
-  }";
+import { allInOne } from "https://raw.githubusercontent.com/mdops-org/mdops-cli/main/mod.ts";
 
 if (import.meta.main) {
   allInOne({
@@ -71,7 +67,7 @@ export const initScript = async ({ mdFile, script }: Options) => {
     } finally {
       await Deno.writeTextFile(
         `${script}.ts`,
-        mdopsContent(mdFile, script, Deno.env.get("BUILD") !== "production"),
+        mdopsContent(mdFile, script),
       );
 
       await run(
