@@ -1,0 +1,9 @@
+#+title: Todo
+* TODO scripts/mdops.ts links to remote address of cli
+* TODO tag v0.1.0 in github
+* TODO add an import-map in local to use the local version in scripts/mdops
+* TODO add github workflow to create releases automatically
+* TODO make it possible to add dependency between tasks
+* TODO allow version range in the dependencies
+* TODO `mdops x` to run commands with dependencies available
+* TODO search, add, remove, update dependencies
