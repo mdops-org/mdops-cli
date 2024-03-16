@@ -29,7 +29,7 @@ const tasksContent = `
 
 ### recompile
 
-\`\`\` shell
+\`\`\`shell
 scripts/mdops recompile
 \`\`\`
 `;
