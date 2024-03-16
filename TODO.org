@@ -18,3 +18,7 @@
 * TODO run a shell with the dependencies
 * TODO tutorial for use in CI
 * TODO automatically create tasks for package.json scripts
+* TODO Don't put recompile in the README as example. Find a better example
+* TODO add a shortcut for `tasks run`
+* TODO rewrite with zig
+* TODO add to gitignore and update README
