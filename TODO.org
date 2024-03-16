@@ -1,5 +1,5 @@
 #+title: Todo
-* TODO scripts/mdops.ts links to remote address of cli
+* DONE scripts/mdops.ts links to remote address of cli
 * TODO tag v0.1.0 in github
 * TODO add an import-map in local to use the local version in scripts/mdops
 * TODO add github workflow to create releases automatically
@@ -9,3 +9,12 @@
 * TODO search, add, remove, update dependencies
 * TODO create a shell script to proxy to local install
 * TODO create a homebrew formula for the shell script
+* TODO vendor dependencies for offline mode
+* TODO run other languages in the README code sections
+* TODO file based dependency runner like make
+* TODO watch a port for availability before running a task
+* TODO options to add binary for different OSes
+* TODO documentation for how to find dependencies from pkgx.sh
+* TODO run a shell with the dependencies
+* TODO tutorial for use in CI
+* TODO automatically create tasks for package.json scripts
