@@ -26,3 +26,5 @@
 * TODO create a documentation website
 * TODO create a marketting homepage
 * DONE mx script should also pass the correct README path in subdirs
+* TODO deno cache --reload bugs
+* TODO remove --unstable flags and check version pinnings again
