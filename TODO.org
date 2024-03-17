@@ -1,32 +1,40 @@
 #+title: Todo
-* DONE scripts/mdops.ts links to remote address of cli
-* TODO tag v0.1.0 in github
-* TODO add an import-map in local to use the local version in scripts/mdops
-* TODO add github workflow to create releases automatically
-* TODO make it possible to add dependency between tasks
-* TODO allow version range in the dependencies
-* TODO `mdops x` to run commands with dependencies available
-* TODO search, add, remove, update dependencies
-* DONE create a shell script to proxy to local install
-* TODO create a homebrew formula for the shell script
-* TODO vendor dependencies for offline mode
-* TODO run other languages in the README code sections
-* TODO file based dependency runner like make
-* TODO watch a port for availability before running a task
-* TODO options to add binary for different OSes
-* TODO documentation for how to find dependencies from pkgx.sh
-* TODO run a shell with the dependencies
-* TODO tutorial for use in CI
-* TODO automatically create tasks for package.json scripts
-* TODO Don't put recompile in the README as example. Find a better example
-* TODO add a shortcut for `tasks run`
-* TODO rewrite with zig
-* TODO add to gitignore and update README
-* TODO add code-of-conduct, contribution, and select of mit/apache2 license
-* TODO create a documentation website
-* TODO create a marketting homepage
-* DONE mx script should also pass the correct README path in subdirs
-* TODO deno cache --reload bugs
-* TODO remove --unstable flags and check version pinnings again
-* TODO add a subcommand to install mx into path
-* TODO manage dependencies in deps.ts
+
+* repo improvements
+** TODO tag v0.1.0 in github
+** TODO add github workflow to create releases automatically
+** TODO vendor dependencies for offline mode
+** TODO manage dependencies in deps.ts
+* cli
+** TODO `mdops x` to run commands with dependencies available
+** TODO search, add, remove, update dependencies
+** TODO run a shell with the dependencies
+** TODO automatically create tasks for package.json scripts
+** TODO add a shortcut for `tasks run`
+** TODO add to gitignore and update README
+** TODO add a subcommand to install mx into path
+* features
+** TODO make it possible to add dependency between tasks
+** TODO allow version range in the dependencies
+** TODO run other languages in the README code sections
+** TODO file based dependency runner like make
+** TODO watch a port for availability before running a task
+* docs
+** TODO documentation for how to find dependencies from pkgx.sh
+** TODO tutorial for use in CI
+** TODO Don't put recompile in the README as example. Find a better example
+** TODO add code-of-conduct, contribution, and select of mit/apache2 license
+** TODO create a documentation website
+** TODO create a marketting homepage
+* fix
+** TODO deno cache --reload bugs
+** TODO remove --unstable flags and check version pinnings again
+** TODO mx script should also pass the correct README path in subdirs
+* other
+** TODO create a homebrew formula for the shell script
+** TODO options to add binary for different OSes
+** TODO rewrite with zig
+* archive
+** DONE scripts/mdops.ts links to remote address of cli
+** DONE create a shell script to proxy to local install
+** DONE add an import-map in local to use the local version in scripts/mdops
