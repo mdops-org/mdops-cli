@@ -7,9 +7,9 @@
 A simple tool to manage dependeny version management and task running for your projects.
 
 
-## Demo
+<!-- ## Demo -->
 
-[TODO placeholder for youtube demo]
+<!-- [TODO placeholder for youtube demo] -->
 
 
 ## Installation
@@ -35,12 +35,24 @@ Deno to compile it to a binary. From now on you can use `scripts/mdops` from the
 
 ## Documentation
 
-[TODO link to documentation website]
+<https://mdops.dev> [TBD]
 
 
 ## Usage/Examples
 
-[TODO add usage]
+Put [mdops.sh](./mdops.sh) in your path
+
+``` shell
+curl -o ~/.local/bin/mx https://raw.githubusercontent.com/mdops-org/mdops-cli/main/mdops.sh
+chmod +x ~/.local/bin/mx
+```
+
+init your repo
+
+``` shell
+cd my/cool/project
+mx init
+```
 
 ## Roadmap
 

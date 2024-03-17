@@ -25,3 +25,4 @@
 * TODO add code-of-conduct, contribution, and select of mit/apache2 license
 * TODO create a documentation website
 * TODO create a marketting homepage
+* DONE mx script should also pass the correct README path in subdirs
