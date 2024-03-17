@@ -7,6 +7,19 @@
 A simple tool to manage dependeny version management and task running for your projects.
 
 
+## :construction: Project Under Construction :construction:
+
+This project is currently under active development. Before the first major release some functionalities might be incomplete,
+and some features may not work as expected.
+
+
+## Project Status
+
+- The project is in its early stages. however some of the core features are already working as expected.
+- I'm experimenting with some functionalities, so expect changes and possible breaking updates.
+- Documentation and examples may be lacking or subject to frequent updates.
+
+
 <!-- ## Demo -->
 
 <!-- [TODO placeholder for youtube demo] -->
@@ -96,6 +109,16 @@ and run a task with correct dependency versions
 ```shell
 mx tasks run dev
 ```
+
+
+## Get Involved
+
+We welcome contributions and feedback! Here's how you can help:
+
+- **Report Issues:** Encounter a bug or have a suggestion? Please create an issue to let us know.
+- **Contribute:** Interested in contributing code, documentation, or tests? Check out our [TBD contributing guidelines](LINK_TO_CONTRIBUTING_GUIDELINES).
+- **Join the Discussion:** Have questions or want to discuss ideas? Join our discussions in [GitHub Discussions](https://github.com/orgs/mdops-org/discussions) or our community chat on [TBD Discord/Slack](LINK_TO_CHAT).
+
 
 ## Roadmap
 
