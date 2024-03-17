@@ -22,20 +22,25 @@ export const allInOne = async (
     .description("Markdown Driven Operasions")
     .version("0.1.0");
 
+  let mdFile = opsFile;
+
+  program.option("-f, --file <file>", "Path to markdown file", (f) => {
+    mdFile = f || mdFile;
+    return f;
+  }, opsFile);
+
   program.command("parse")
     .description("Parse a markdown file to json")
-    .argument("[mdFile]", "Path to markdown file", opsFile)
-    .action(async (fname) => {
-      const content = await Deno.readTextFile(fname);
+    .action(async () => {
+      const content = await Deno.readTextFile(mdFile);
       console.log(JSON.stringify(parse(content), null, 4));
     });
 
   program.command("select")
     .description("Select a subset of the markdown file using a css selector")
-    .option("-f, --file <file>", "Path to markdown file", opsFile)
     .argument("<selector>", "CSS Selector to search in the file content")
-    .action(async (selector, options) => {
-      const content = await Deno.readTextFile(options.file);
+    .action(async (selector) => {
+      const content = await Deno.readTextFile(mdFile);
       const result = parse(content).querySelectorAll(selector);
       console.log(JSON.stringify(result, undefined, 4));
     });
@@ -44,13 +49,8 @@ export const allInOne = async (
     .description(
       "Initiate the current directory by creating a `scripts/mdops` binary in it",
     )
-    .option(
-      "-m, --md-file <file>",
-      "Path to the default markdown file",
-      opsFile,
-    )
     .option("-s, --script <script>", "Path to the script", "scripts/mdops")
-    .action(initScript);
+    .action(({ script }) => initScript({ script, mdFile }));
 
   program.command("recompile")
     .description("Recompile the script")
@@ -81,30 +81,27 @@ export const allInOne = async (
 
   dependencies.command("list")
     .description("Print dependencies as listed in the markdown file")
-    .option("-f, --file <file>", "Path to markdown file", opsFile)
     .option(
       "-s, --selector <selector>",
       "CSS selector of the dependencies table",
       dependenciesSelector,
     )
-    .action(listDeps);
+    .action(({ selector }) => listDeps({ file: mdFile, selector }));
 
   const tasks = program.command("tasks")
     .description("Sub-commands for managing tasks");
 
   tasks.command("list")
     .description("Print all the available tasks from the markdown file")
-    .option("-f, --file <file>", "Path to markdown file", opsFile)
     .option(
       "-s, --selector <selector>",
       "CSS selector of the dependencies table",
       tasksSelector,
     )
-    .action(listTasks);
+    .action(({ selector }) => listTasks({ file: mdFile, selector }));
 
   tasks.command("run")
     .description("Run a task")
-    .option("-f, --file <file>", "Path to markdown file", opsFile)
     .option(
       "-t, --tasks-selector <tasks-selector>",
       "CSS selector of the tasks",
@@ -116,7 +113,9 @@ export const allInOne = async (
       dependenciesSelector,
     )
     .argument("<task>", "Name of the task to run")
-    .action(runTask);
+    .action((task, { tasksSelector, depsSelector }) =>
+      runTask(task, { depsSelector, tasksSelector, file: mdFile })
+    );
 
   await program.parseAsync();
 };
