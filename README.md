@@ -18,7 +18,7 @@ One liner:
 
 ```shell
 # cd to your project
-sh <(curl -Ssf https://pkgx.sh) deno@1.41.2 run -A --unstable-ffi --unstable-fs https://raw.githubusercontent.com/mdops-org/mdops-cli/main/main.ts init
+sh <(curl -Ssf https://raw.githubusercontent.com/mdops-org/mdops-cli/main/mdops.sh) init
 ```
 
 Thanks to [pkgx](https://pkgx.sh) we don't need to install anything beforehand. This will use the pkgx oneliner to download a temporary
@@ -29,14 +29,8 @@ Deno to compile it to a binary. From now on you can use `scripts/mdops` from the
 
 ## Features
 
-- Light/dark mode toggle
-![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
-- Live previews
-![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
-- Fullscreen mode
-![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
-- Cross platform
-![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
+- A task runner based on the code in markdown file
+- Automatic dependency installation in the background before running the tasks
 
 
 ## Documentation

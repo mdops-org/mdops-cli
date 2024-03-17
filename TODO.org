@@ -7,7 +7,7 @@
 * TODO allow version range in the dependencies
 * TODO `mdops x` to run commands with dependencies available
 * TODO search, add, remove, update dependencies
-* TODO create a shell script to proxy to local install
+* DONE create a shell script to proxy to local install
 * TODO create a homebrew formula for the shell script
 * TODO vendor dependencies for offline mode
 * TODO run other languages in the README code sections
@@ -22,3 +22,6 @@
 * TODO add a shortcut for `tasks run`
 * TODO rewrite with zig
 * TODO add to gitignore and update README
+* TODO add code-of-conduct, contribution, and select of mit/apache2 license
+* TODO create a documentation website
+* TODO create a marketting homepage
