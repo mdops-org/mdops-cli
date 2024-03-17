@@ -28,3 +28,5 @@
 * DONE mx script should also pass the correct README path in subdirs
 * TODO deno cache --reload bugs
 * TODO remove --unstable flags and check version pinnings again
+* TODO add a subcommand to install mx into path
+* TODO manage dependencies in deps.ts
