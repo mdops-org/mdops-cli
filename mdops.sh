@@ -16,7 +16,12 @@ done
 if $found; then
     $currentDir/scripts/mdops "$@"
 else
-    eval "$(curl -Ssf https://pkgx.sh)"
+    tmpdir=$(mktemp -d)
+    trap "rm -rf $tmpdir" 0 2 3 15
 
-    pkgx deno@1.41.2 run -A --unstable-ffi --unstable-fs https://raw.githubusercontent.com/mdops-org/mdops-cli/main/main.ts "$@"
+    curl --progress-bar --fail --proto '=https' "https://pkgx.sh/$(uname)/$(uname -m)".tgz \
+        | tar xz --directory "$tmpdir"
+
+    $tmpdir/pkgx deno@1.41.2 run -A --unstable-ffi --unstable-fs \
+        https://raw.githubusercontent.com/mdops-org/mdops-cli/main/main.ts "$@"
 fi
