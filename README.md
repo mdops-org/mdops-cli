@@ -42,16 +42,59 @@ Deno to compile it to a binary. From now on you can use `scripts/mdops` from the
 
 Put [mdops.sh](./mdops.sh) in your path
 
-``` shell
+```shell
 curl -o ~/.local/bin/mx https://raw.githubusercontent.com/mdops-org/mdops-cli/main/mdops.sh
 chmod +x ~/.local/bin/mx
 ```
 
 init your repo
 
-``` shell
+```shell
 cd my/cool/project
 mx init
+```
+
+update your README.md to add dependency
+
+```markdown
+## Dependencies
+
+| dependency | version |
+|------------|---------|
+| nodejs.org | 21.6.2  |
+
+```
+
+list your dependencies
+
+```shell
+mx dependencies list
+```
+
+add some tasks to your README.md
+
+````markdown
+## Tasks
+
+### dev
+
+run the dev server
+
+```shell
+npm run dev
+```
+````
+
+list available tasks
+
+``` shell
+mx tasks list
+```
+
+and run a task with correct dependency versions
+
+```shell
+mx tasks run dev
 ```
 
 ## Roadmap
@@ -104,7 +147,7 @@ By commiting the script and the binary to your repo you will make it easily acce
 However, if you are concerned for the size of the repo or if you want to change the script frequently, you can
 put the binary into `.gitignore` and add instructions for how to compile the script in the `README.md` file:
 
-``` shell
+```shell
 sh <(curl -Ssf https://pkgx.sh) deno@1.41.2 compile -A --unstable-ffi --unstable-fs -o scripts/ scripts/mdops.ts
 ```
 
@@ -123,7 +166,7 @@ This is a once step after cloning the repo.
 
 ### recompile
 
-``` shell
+```shell
 scripts/mdops recompile
 ```
 
