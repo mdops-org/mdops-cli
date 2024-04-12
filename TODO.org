@@ -1,18 +1,24 @@
 #+title: Todo
 
 * repo improvements
-** TODO tag v0.1.0 in github
 ** TODO add github workflow to create releases automatically
 ** TODO vendor dependencies for offline mode
 ** TODO manage dependencies in deps.ts
+** TODO extract lib parts into another repo
 * cli
 ** TODO `mdops x` to run commands with dependencies available
+** TODO also make tasks available to 'x'
 ** TODO search, add, remove, update dependencies
 ** TODO run a shell with the dependencies
 ** TODO automatically create tasks for package.json scripts
 ** TODO add a shortcut for `tasks run`
 ** TODO add to gitignore and update README
 ** TODO add a subcommand to install mx into path
+** TODO shorten dependencies to deps
+** TODO improve output of `deps list`
+** TODO improve output of `tasks list`
+** TODO add a `--format json` to commands
+** TODO read the description of the tasks and show in the output
 * features
 ** TODO make it possible to add dependency between tasks
 ** TODO allow version range in the dependencies
@@ -33,8 +39,10 @@
 * other
 ** TODO create a homebrew formula for the shell script
 ** TODO options to add binary for different OSes
+** TODO think of a solution for running tasks from IDEs
 ** TODO rewrite with zig
 * archive
 ** DONE scripts/mdops.ts links to remote address of cli
 ** DONE create a shell script to proxy to local install
 ** DONE add an import-map in local to use the local version in scripts/mdops
+** DONE tag v0.1.0 in github
