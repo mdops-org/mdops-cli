@@ -4,8 +4,20 @@
 
 # Markdown Driven Operations
 
-A simple tool to manage dependeny version management and task running for your projects.
+Transform your development by replacing cluttered toolsets with a streamlined tool for managing project environments and task execution.
 
+## What *mdops* Solves
+
+Markdown Driven Operations streamlines project setup and management by eliminating the clutter of multiple tools. Here’s how:
+
+- **No More Version Managers**: Forget SDKMAN, asdf, rbenv, pyenv, and nvm.
+- **Simpler Build Tools**: Ditch complex scripts and Makefiles—use Markdown instead.
+- **Everything in Markdown**: All project commands and dependencies are clearly documented and immediately discoverable.
+- **Zero Installations**: Everything runs directly from the repo—no external installs needed.
+- **Self-Contained Repos**: Clone and run projects with no additional setup.
+- **Project Isolation**: Avoids version conflicts and keeps your system clean.
+- **Clean System Environment**: Manage dependencies and versions locally within the project.
+- **Efficient Setup**: Spend less time configuring and more time developing.
 
 ## :construction: Project Under Construction :construction:
 
@@ -198,8 +210,9 @@ scripts/mdops recompile
 
 Here are some related projects. Thanks for the inspiration.
 
-* [pkgx: Run anything binary](https://pkgx.sh/)
-* [XC: Markdown defined task runner](https://github.com/joerdav/xc)
+* [pkgx - a blazingly fast, standalone, cross‐platform binary that runs anything](https://pkgx.sh/)
+* [xc - Simple, Convenient, Markdown-based task runner](https://github.com/joerdav/xc)
+* [runme - DevOps Workflows Built with Markdown](https://runme.dev)
 
     
 ## License
