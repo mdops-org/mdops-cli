@@ -21,7 +21,7 @@ const depsContent = `
 | dependency | version |
 |------------|---------|
 |            |         |
-`
+`;
 
 const tasksContent = `
 

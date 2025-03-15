@@ -25,6 +25,7 @@
 ** TODO run other languages in the README code sections
 ** TODO file based dependency runner like make
 ** TODO watch a port for availability before running a task
+** TODO in the tasks section in README write a short description on how to run tasks
 * docs
 ** TODO documentation for how to find dependencies from pkgx.sh
 ** TODO tutorial for use in CI
@@ -36,6 +37,7 @@
 ** TODO deno cache --reload bugs
 ** TODO remove --unstable flags and check version pinnings again
 ** TODO mx script should also pass the correct README path in subdirs
+** TODO if there is no dependencies or no section there should be no errors
 * other
 ** TODO create a homebrew formula for the shell script
 ** TODO options to add binary for different OSes
